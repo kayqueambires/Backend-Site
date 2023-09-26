@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualization</title>
+
+    <!-- Scripts Plotly -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Visualization</h1>
+
+    <!-- Links -->
+    <ul>
+        <li><a href="{% url 'fetch_data' %}">Search Data</a></li>
+    </ul>
+
+    <!-- Visualization Plotly -->
+    <div id="visualization"></div>
+
+    <script>
+        // Graph data
+        var user_ids = [1, 2, 3, 4, 5]; 
+        var post_counts = [10, 8, 15, 7, 12]; 
+
+        // Graph config
+        var data = [{
+            x: user_ids,
+            y: post_counts,
+            type: 'bar',
+            text: user_ids.map(String),  
+        }];
+
+        var layout = {
+            title: 'Posts by User',
+            xaxis: { title: 'UserID' },
+            yaxis: { title: 'Posts' },
+        };
+
+        Plotly.newPlot('visualization', data, layout);
+    </script>
+</body>
+</html>
